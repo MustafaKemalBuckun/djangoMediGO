@@ -1,0 +1,56 @@
+{% extends 'home/userbase.html' %}
+{% load static %}
+{% block content %}
+
+<body id="top">
+
+    <section class="page-title bg-1">
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="block text-center">
+                        <span class="text-white">User Hastaneler</span>
+                        <h1 class="text-capitalize mb-5 text-lg">User Hastaneler</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section doctors">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-6 text-center">
+                    <div class="section-title">
+                        <h2>Hastaneler</h2>
+                        <div class="divider mx-auto my-4"></div>
+                        <p>Başlık Hastaneler</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row shuffle-wrapper portfolio-gallery">
+                {% for hospital in hospitals %}
+                    <div class="col-lg-3 col-sm-6 col-md-6">
+                        <div class="position-relative doctor-inner-box">
+                            <div class="doctor-profile">
+                                <div class="doctor-img">
+                                    <img src="{{ hospital.image.url }}" alt="" class="" width="200" height="200">
+                                </div>
+                            </div>
+                            <div class="content mt-3">
+                                <h3 class="mb-0"><a href="{{ hospital.id }}">{{ hospital.title }}</a></h3>
+                                <p>{{ hospital.location }}</p>
+                            </div>
+                            <div class="row">
+                                <h5>{{ hospital.info }}</h5>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+</body>
+{% endblock %}
+

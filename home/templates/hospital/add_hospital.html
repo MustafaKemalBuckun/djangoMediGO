@@ -1,0 +1,142 @@
+{% load static %}
+
+<style>
+    @media (min-width: 1025px) {
+        .h-custom {
+            height: 100vh !important;
+        }
+    }
+    .card-registration .select-input.form-control[readonly]:not([disabled]) {
+        font-size: 1rem;
+        line-height: 2.15;
+        padding-left: .75em;
+        padding-right: .75em;
+    }
+    .card-registration .select-arrow {
+        top: 13px;
+    }
+
+    .gradient-custom-2 {
+        background: #a1c4fd;
+
+        background: -webkit-linear-gradient(to right, rgba(161, 196, 253, 1), rgba(194, 233, 251, 1));
+
+        background: linear-gradient(to right, rgba(161, 196, 253, 1), rgba(194, 233, 251, 1))
+    }
+
+    .bg-gray {
+        background-color: #B8BBC1;
+    }
+    @media (min-width: 992px) {
+        .card-registration-2 .bg-gray {
+            border-top-right-radius: 15px;
+            border-bottom-right-radius: 15px;
+        }
+    }
+    @media (max-width: 991px) {
+        .card-registration-2 .bg-gray {
+            border-bottom-left-radius: 15px;
+            border-bottom-right-radius: 15px;
+        }
+    }
+</style>
+<body>
+<section class="h-100 h-custom gradient-custom-2" style="margin-left: 200px">
+    <div class="container py-5 h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-12">
+                <div class="card card-registration card-registration-2" style="border-radius: 15px;">
+                    <div class="card-body p-0">
+                        <div class="row g-0">
+                            <div class="col-lg-6">
+                                <div class="p-5">
+                                    <h3 class="fw-normal mb-5" style="color: #4835d4;">Hastane Kayıt</h3>
+                                    <div class="row">
+                                        <div class="col-md-6 mb-4 pb-2">
+
+                                            <div class="form-outline">
+                                                <small class="form-text text-muted">Hastane Adı:</small>
+                                                <label class="form-label" for="form3Examplev2">{{ hform.title }}</label>
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                    <div class="mb-4 pb-2">
+                                        <div class="form-outline">
+                                            <small class="form-text text-muted">Hastane Fotoğrafı:</small>
+                                            <label class="form-label" for="form3Examplev4">{{ hform.image }}</label>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-5 mb-4 pb-2">
+
+                                            <div class="form-outline form-white">
+                                                <small class="form-text text-muted">Hastane Bilgisi: </small>
+                                                <label class="form-label" for="form3Examplea4">{{ hform.info }}</label>
+                                            </div>
+
+                                        </div>
+                                        <div class="col-md-7 mb-4 pb-2">
+
+                                            <div class="form-outline form-white">
+                                                <small class="form-text text-muted">Hastane Bilgisi(Uzun):</small>
+                                                <label class="form-label" for="form3Examplea5">{{ hform.about }}</label>
+                                            </div>
+
+                                        </div>
+                                        <div class="col-md-7 mb-4 pb-2">
+
+                                            <div class="form-outline form-white">
+                                                <small class="form-text text-muted">Yatak Sayısı:</small>
+                                                <label class="form-label" for="form3Examplea5">{{ hform.bed_count }}</label>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <button type="button" class="btn btn-light btn-lg"
+                                            data-mdb-ripple-color="" style="background-color: #007bff">Kaydet</button>
+
+                                </div>
+                            </div>
+                            <div class="col-lg-6 bg-gray text-white">
+                                <div class="p-5">
+                                    <div class="mb-4 pb-2">
+                                        <div class="form-outline form-white">
+                                            <small class="form-text text-muted">Doktor Fotoğrafı:</small>
+                                            <label class="form-label" for="form3Examplea2">{{ hform.location}}</label>
+                                        </div>
+                                    </div>
+
+                                    <div class="mb-4 pb-2">
+                                        <div class="form-outline form-white">
+                                            <small class="form-text text-muted">Doktor Biyografisi:</small>
+                                            <label class="form-label" for="form3Examplea3">{{ hform.staff_count }}</label>
+                                        </div>
+                                    </div>
+                                    <div class="mb-4 pb-2">
+                                        <div class="form-outline form-white">
+                                            <small class="form-text text-muted">Doktor Biyografisi:</small>
+                                            <label class="form-label" for="form3Examplea3">{{ hform.foundation_date }}</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="scroll-top-wrapper"><span class="scroll-top-inner"><i class="fa fa-arrow-circle-up"></i></span></div>
+<script src="{% static 'js/jquery.min.js' %}"></script>
+<script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'js/back-to-top-scroll.js' %}"></script>
+<script src="{% static 'js/Bold-BS4-Animated-Back-To-Top.js' %}"></script>
+<script src="{% static 'js/bs-init.js' %}"></script>
+<script src="{% static 'js/Sidebar-Menu.js' %}"></script>
+</body>
+
+</html>

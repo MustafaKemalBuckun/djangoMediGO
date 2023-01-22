@@ -1,0 +1,177 @@
+{% load static %}
+{% load widget_tweaks %}
+{% block content %}
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <body>
+    <section class="vh-100" style="background-color: #b0ceff;">
+        <div class="container h-100">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="col-xl">
+                    <h1 class="text-primary mb-4" style="text-align: center;">Hastane Kayıt</h1>
+                    <form method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="card-body">
+
+                                    <div class="row align-items-center pt-4 pb-3">
+                                        <div class="col-md-3 ps-5">
+
+                                            <h6 class="mb-0">Kullanıcı Adınız:</h6>
+
+                                        </div>
+                                        <div class="col-md-9 pe-5">
+
+                                            {% render_field hregisterform.username class+="form-control" placeholder="Kullanıcı Adınız" %}
+
+                                        </div>
+                                    </div>
+
+                                    <hr class="mx-n3">
+
+                                    <div class="row align-items-center py-3">
+                                        <div class="col-md-3 ps-5">
+
+                                            <h6 class="mb-0">Parola: </h6>
+
+                                        </div>
+                                        <div class="col-md-9 pe-5">
+
+                                            {% render_field hregisterform.password1 class+="form-control" placeholder="Parolanız" %}
+
+                                        </div>
+                                    </div>
+
+                                    <hr class="mx-n3">
+
+                                    <div class="row align-items-center py-3">
+                                        <div class="col-md-3 ps-5">
+
+                                            <h6 class="mb-0">Hakkında</h6>
+
+                                        </div>
+                                        <div class="col-md-9 pe-5">
+
+                                            {% render_field hform.about class+="form-control" placeholder="Hastane Detaylı Bilgi" cols="60" rows="3" %}
+
+                                        </div>
+                                    </div>
+
+                                    <hr class="mx-n3">
+
+                                    <div class="row align-items-center py-3" style="height: 132px">
+                                        <div class="col-md-3 ps-5">
+
+                                            <h6 class="mb-0">Fotoğraf</h6>
+
+                                        </div>
+                                        <div class="col-md-9 pe-5">
+
+                                            {% render_field hform.image class+="form-control" %}
+
+                                        </div>
+                                    </div>
+
+                                    <hr class="mx-n3">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="card-body">
+
+                                    <div class="row align-items-center pt-4 pb-3">
+                                        <div class="col-md-3 ps-5">
+
+                                            <h6 class="mb-0">E-Mail:</h6>
+
+                                        </div>
+                                        <div class="col-md-9 pe-5">
+
+                                            {% render_field hregisterform.email class+="form-control" placeholder="E-Mail" %}
+
+                                        </div>
+                                    </div>
+
+                                    <hr class="mx-n3">
+
+                                    <div class="row align-items-center py-3">
+                                        <div class="col-md-3 ps-5">
+
+                                            <h6 class="mb-0">Parola Tekrar: </h6>
+
+                                        </div>
+                                        <div class="col-md-9 pe-5">
+
+                                            {% render_field hregisterform.password2 class+="form-control" placeholder="Parola Tekrar" %}
+
+                                        </div>
+                                    </div>
+
+                                    <hr class="mx-n3">
+
+                                    <div class="row align-items-center py-3" style="height: 118px">
+                                        <div class="col-md-2">
+
+                                            <h6 class="mb-0">Hastane Adı:</h6>
+
+                                        </div>
+                                        <div class="col-md-4">
+
+                                            {% render_field hform.title class+="form-control" placeholder="Hastane Tam Adı" %}
+
+                                        </div>
+                                        <div class="col-md-2">
+
+                                            <h6 class="mb-0">Bilgi:</h6>
+
+                                        </div>
+                                        <div class="col-md-4">
+
+                                            {% render_field hform.info class+="form-control" placeholder="Hastane Bilgisi" %}
+
+                                        </div>
+                                    </div>
+
+                                    <hr class="mx-n3">
+
+                                    <div class="row align-items-center py-3" style="height: 132px">
+                                        <div class="col-md-2">
+
+                                            <h6 class="mb-0">Çalışan Sayısı:</h6>
+
+                                        </div>
+                                        <div class="col-md-4">
+
+                                            {% render_field hform.staff_count class+="form-control" placeholder="Çalışan Sayısı" %}
+
+                                        </div>
+                                        <div class="col-md-2">
+
+                                            <h6 class="mb-0">Şehir:</h6>
+
+                                        </div>
+                                        <div class="col-md-4">
+
+                                            {% render_field hform.location class+="form-control" style="margin-left: 3px" %}
+
+                                        </div>
+                                    </div>
+
+                                    <hr class="mx-n3">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pb-4 text-lg-center">
+                            <button type="submit" class="btn btn-primary btn-lg" style="width: 500px">Kayıt</button>
+                        </div>
+                    </form>
+                    {{ hregisterform.errors }}
+                    {{ hform.errors }}
+                </div>
+            </div>
+        </div>
+    </section>
+    </body>
+
+{% endblock %}

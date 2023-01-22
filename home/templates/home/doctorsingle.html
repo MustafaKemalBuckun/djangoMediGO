@@ -1,0 +1,105 @@
+{% extends 'home/base.html' %}
+{% load static %}
+{% block content %}
+
+    <body id="top">
+
+    <section class="page-title bg-1">
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="block text-center">
+                        <span class="text-white">Doctor Details</span>
+                        <h1 class="text-capitalize mb-5 text-lg">{{ doctor.name }}</h1>
+
+                        <!-- <ul class="list-inline breadcumb-nav">
+                          <li class="list-inline-item"><a href="index.html" class="text-white">Home</a></li>
+                          <li class="list-inline-item"><span class="text-white">/</span></li>
+                          <li class="list-inline-item"><a href="#" class="text-white-50">Doctor Details</a></li>
+                        </ul> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="section doctor-single">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-6">
+                    <div class="doctor-img-block">
+                        {% if doctor.image %}
+                            <img src="{{ doctor.image.url }}" alt="" class="img-fluid w-100">
+                        {% endif %}
+                        {% if not doctor.image %}
+                            <img src="{% static 'images/defaultd.png' %}" alt="" class="img-fluid w-100">
+                        {% endif %}
+                        <div class="info-block mt-4">
+                            <h4 class="mb-0">{{ doctor.name }}</h4>
+                            <p>{{ doctor.speciality }}</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-8 col-md-6">
+                    <div class="doctor-details mt-4 mt-lg-0">
+                        <h2 class="text-md">Biyografi</h2>
+                        <div class="divider my-4"></div>
+                        <h5>{{ doctor.hospital }}</h5>
+                        <p>{{ doctor.biography }}</p>
+
+
+                        <a href="/appointment" class="btn btn-main-2 btn-round-full mt-3">Randevu Al<i class="icofont-simple-right ml-2  "></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="section-title">
+                        <h2 class="mb-4">Yorumlar</h2>
+                        <div class="divider  my-4"></div>
+                    </div>
+                </div>
+            </div>
+            {% if not comments %}
+                <div class="row justify-content-left pl-3">
+                    <p class="text-muted">
+                        Henüz hiç yorum yapılmamış.
+                    </p>
+                </div>
+            {% endif %}
+            {% for comment in comments %}
+                <div class="row card-body" style="background-color: #f8f9fa">
+                    <div class="col-11">
+                        <h4>{{ comment.title }}</h4>
+                        <p>{{ comment.comment_detail }}</p>
+                    </div>
+                    {% if comment.user == user %}
+                        <div class="col-1 pull-right">
+                            <a href="{% url 'home:delete_comment' comment_id=comment.id doctor_id=doctor.id %}">
+                                <button class="btn btn-sm" style="background-color: #e12454; color: #FFFFFF;"
+                                        onclick="return confirm('Silmek istediğinize emin misiniz?')">
+                                    Sil
+                                </button>
+                            </a>
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <p class="text-muted">{{ comment.user.first_name }} {{ comment.user.last_name }} tarafından,
+                            {{ comment.sent_date }} tarihinde gönderildi.</p>
+                    </div>
+                </div>
+                <hr class="mx-n3">
+            {% endfor %}
+        </div>
+    </section>
+    </body>
+{% endblock %}

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="JavaScriptLibraryMappings">
+    <file url="file://$PROJECT_DIR$" libraries="{all, animate.css, bootstrap-icons, buttons.dataTables, buttons.html5, dataTables.buttons, font-awesome, jquery, jquery-2.1.1, jquery-3.3.1, jquery-3.5.1, jquery.dataTables, jszip, materialize, pdfmake}" />
+  </component>
+</project>

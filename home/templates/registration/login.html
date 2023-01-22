@@ -1,0 +1,48 @@
+{% load crispy_forms_filters %}
+{% load crispy_forms_tags %}
+{% load widget_tweaks %}
+{% block content %}
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<section class="vh-100" style="background-color: #b0ceff;">
+    <div class="container h-100 pl-5">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="card col-4" style="border-radius: 2%">
+                <div class="card-body">
+                    <h3 style="text-align: center; padding-bottom: 20px">Giriş Yap</h3>
+                    <form method="post">
+                        {% csrf_token %}
+                        <div class="form-outline mb-4">
+                            <h6 class="mb-0">Kullanıcı Adı:</h6>
+                            {% render_field loginform.username class+="form-control" placeholder="Kullanıcı Adı"%}
+{#                            <label class="form-label" for="form2Example1"></label>#}
+                        </div>
+
+                        <div class="form-outline mb-4">
+                            <h6 class="mb-0">Parola:</h6>
+                            {% render_field loginform.password class+="form-control" placeholder="Parola"%}
+{#                            <label class="form-label" for="form2Example2">Password</label>#}
+                        </div>
+
+                        <div class="row mb-4">
+                            <div class="col">
+                                <a href="#!">Şifremi unuttum</a>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary btn-block mb-4">Giriş</button>
+
+                        <div class="text-center">
+                            <p>Üye değil misiniz? <a href="/register">Kayıt</a> olun.</p>
+
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+
+

@@ -1,0 +1,83 @@
+{% load crispy_forms_filters %}
+{% load crispy_forms_tags %}
+{% load widget_tweaks %}
+{% block content %}
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <section class="vh-100" style="background-color: #b0ceff;">
+        <div class="container py-5 h-100">
+            <div class="row justify-content-center align-items-center h-100">
+                <div class="col-12 col-lg-9 col-xl-7">
+                    <div class="card shadow-2-strong card-registration" style="border-radius: 15px;">
+                        <div class="card-body p-4 p-md-5">
+                            <h3 class="mb-4 pb-2 pb-md-0 mb-md-5 text-center">Kayıt Olun</h3>
+                            <form method="post">
+                                {% csrf_token %}
+                                <div class="row">
+                                    <div class="col-md-6 mb-4 pb-2">
+
+                                        <div class="form-outline">
+                                            <h6 class="mb-0">Adınız:</h6>
+                                            {% render_field registerform.first_name class+="form-control" placeholder="Ad" %}
+                                        </div>
+
+                                    </div>
+                                    <div class="col-md-6 mb-4 pb-2">
+
+                                        <div class="form-outline">
+                                            <h6 class="mb-0">Soyadınız:</h6>
+                                            {% render_field registerform.last_name class+="form-control" placeholder="Soyad" %}
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6 mb-4">
+
+                                        <div class="form-outline">
+                                            <h6 class="mb-0">Kullanıcı Adınız:</h6>
+                                            {% render_field registerform.username class+="form-control" placeholder="Kullanıcı Adı" %}
+                                        </div>
+
+                                    </div>
+                                    <div class="col-md-6 mb-4">
+
+                                        <div class="form-outline">
+                                            <h6 class="mb-0">E-Mail Adresiniz:</h6>
+                                            {% render_field registerform.email class+="form-control" placeholder="örnek@mail.com" %}
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-6 mb-4 d-flex align-items-center">
+
+                                        <div class="form-outline datepicker w-100">
+                                            <h6 class="mb-0">Parola:</h6>
+                                            {% render_field registerform.password1 class+="form-control" placeholder="Parola" %}
+                                        </div>
+
+                                    </div>
+                                    <div class="col-md-6 mb-4 d-flex align-items-center">
+
+                                        <div class="form-outline datepicker w-100">
+                                            <h6 class="mb-0">Parola Tekrar:</h6>
+                                            {% render_field registerform.password2 class+="form-control" placeholder="Parola Tekrar" %}
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="mt-4 pt-2 text-center">
+                                    <input class="btn btn-primary btn-lg btn-block mb-4" type="submit" value="Kayıt Ol" />
+                                </div>
+                            </form>
+                            <p class="text-center">Zaten kaydınız var mı? <a href="/login">giriş</a> yapın.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

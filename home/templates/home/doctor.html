@@ -1,0 +1,99 @@
+{% extends 'home/base.html' %}
+{% load static %}
+{% block content %}
+    <head>
+        <title>
+            Doktorlar
+        </title>
+    </head>
+<body id="top">
+
+    <section class="page-title bg-1">
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="block text-center">
+                        <span class="text-white">Tum Doktorlar</span>
+                        <h1 class="text-capitalize mb-5 text-lg">Uzman doktorlar</h1>
+
+                        <!-- <ul class="list-inline breadcumb-nav">
+                          <li class="list-inline-item"><a href="index.html" class="text-white">Home</a></li>
+                          <li class="list-inline-item"><span class="text-white">/</span></li>
+                          <li class="list-inline-item"><a href="#" class="text-white-50">All Doctors</a></li>
+                        </ul> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- portfolio -->
+    <section class="section doctors">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-6 text-center">
+                    <div class="section-title">
+                        <h2>Doktorlar</h2>
+                        <div class="divider mx-auto my-4"></div>
+                        <p>Musterilerimiz icin cok cesitli saglik hizmeti sunuyoruz. </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 text-center  mb-5">
+                <div class="btn-group btn-group-toggle " data-toggle="buttons">
+                    <label class="btn active ">
+                        <input type="radio" name="shuffle-filter" value="all" checked="checked" />Tum Bolumler
+                    </label>
+                </div>
+            </div>
+            <div class="row shuffle-wrapper portfolio-gallery">
+                {% for doctor in doctors %}
+                    <div class="col-lg-3 col-sm-6 col-md-6 mb-4 shuffle-item" data-groups="[&quot;cat1&quot;,&quot;cat2&quot;]">
+                        <div class="position-relative doctor-inner-box">
+                            <div class="doctor-profile">
+                                <div class="doctor-img">
+                                {% if doctor.image %}
+                                    <img src="{{ doctor.image.url }}" alt="" href="doctors/{{ doctor.id }}/" class="img-fluid" width="200" height="200">
+                                {% endif %}
+                                {% if not doctor.image %}
+                                    <img src="{% static 'images/defaultd.png' %}" width="200" height="200" alt="">
+                                {% endif %}
+                            </div>
+                            </div>
+                            <div class="content mt-3">
+                                <h4 class="mb-0"><a href="{{ doctor.id }}">{{ doctor.name }}</a></h4>
+                                <p>{{ doctor.speciality }}</p>
+                            </div>
+                        </div>
+                        <h5 class="card-title">
+                            <span class="fa fa-star {% if doctor.average_rating > 0 %} checked {% endif %}"></span>
+                            <span class="fa fa-star {% if doctor.average_rating > 1 %} checked {% endif %}"></span>
+                            <span class="fa fa-star {% if doctor.average_rating > 2 %} checked {% endif %}"></span>
+                            <span class="fa fa-star {% if doctor.average_rating > 3 %} checked {% endif %}" ></span>
+                            <span class="fa fa-star {% if doctor.average_rating > 4 %} checked {% endif %}"></span>
+                        </h5>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+{% endblock %}
+{% block script %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script>
+        const rate = (rating, doctor_id) => {
+            fetch(`/rate/${doctor_id}/${rating}/`, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            }).then(rest => {
+                window.location.reload();
+            })
+        }
+    </script>
+</body>
+{% endblock script %}

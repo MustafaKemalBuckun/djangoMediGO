@@ -1,0 +1,203 @@
+{% extends 'home/userbase.html' %}
+{% load widget_tweaks %}
+{% load static %}
+{% block content %}
+
+    <head>
+    <title>Doktor Bilgisi</title>
+    </head>
+    <body id="top">
+    <link rel=”stylesheet” href=”https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css”rel=”nofollow” integrity=”sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm” crossorigin=”anonymous”>
+    <section class="page-title bg-1">
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="block text-center">
+                        <span class="text-white">Doktor Sayfası</span>
+                        <h1 class="text-capitalize mb-5 text-lg">{{ doctor.name }}</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="section doctor-single">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-6">
+                    <div class="doctor-img-block">
+                        {% if doctor.image %}
+                            <img src="{{ doctor.image.url }}" alt="" class="img-fluid w-100">
+                        {% endif %}
+                        {% if not doctor.image %}
+                            <img src="{% static 'images/defaultd.png' %}" alt="" class="img-fluid w-100">
+                        {% endif %}
+                        <div class="info-block mt-4">
+                            <h4 class="mb-0">{{ doctor.name }}</h4>
+                            <p>{{ doctor.speciality }}</p>
+                            <h5 class="card-title">
+                                <span class="fa fa-star {% if doctor.average_rating > 0 %} checked {% endif %}"></span>
+                                <span class="fa fa-star {% if doctor.average_rating > 1 %} checked {% endif %}"></span>
+                                <span class="fa fa-star {% if doctor.average_rating > 2 %} checked {% endif %}"></span>
+                                <span class="fa fa-star {% if doctor.average_rating > 3 %} checked {% endif %}" ></span>
+                                <span class="fa fa-star {% if doctor.average_rating > 4 %} checked {% endif %}"></span>
+                            </h5>
+                            {% if can_vote %}
+                                <p class="text-muted">
+                                    Bu doktordan daha önce {{ check_appointment.count }} kere tedavi oldunuz.
+                                </p>
+                                <p class="text-muted">
+                                    Daha önceki puanınız: {{ user_rating.rating }}
+                                </p>
+                            {% endif %}
+                            {% if not can_vote %}
+                                <p class="text-muted">
+                                    Bu doktora puan vermek veya yorum yapmak için en az bir kere muayene olmanız gerekmektedir.
+                                </p>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-8 col-md-6">
+                    <div class="doctor-details mt-4 mt-lg-0">
+                        <h2 class="text-md">Biyografi</h2>
+                        <div class="divider my-4"></div>
+                        <h5>{{ doctor.hospital }}</h5>
+                        <p>{{ doctor.biography }}</p>
+                        <div class="row">
+                            <a href="/appointment" class="btn btn-main-2 btn-round-full mt-3">Randevu Al<i class="icofont-simple-right ml-2  "></i></a>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section>
+        <div class="container">
+        {% if commentable and can_vote %}
+            <div class="row justify-content-center">
+                <h2 style="color: #223a66">Yorum Yapın</h2>
+            </div>
+            <hr class="mx-n3">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12">
+
+                        <div class="row pl-3">
+                            <p>Puanlayın (isteğe bağlı):</p>
+                        </div>
+                        <div class="row pl-3">
+                            <ul class="btn btn-light list-inline rating-list">
+                                <li onclick="rate(5, {{ doctor.id }})">
+                                    <i class="fa fa-star {% if doctor.user_rating > 4 %} checked {% endif %}" title="Rate 5"></i></li>
+                                <li onclick="rate(4, {{ doctor.id }})">
+                                    <i class="fa fa-star {% if doctor.user_rating > 3 %} checked {% endif %}" title="Rate 4"></i></li>
+                                <li onclick="rate(3, {{ doctor.id }})">
+                                    <i class="fa fa-star {% if doctor.user_rating > 2 %} checked {% endif %}" title="Rate 3"></i></li>
+                                <li onclick="rate(2, {{ doctor.id }})">
+                                    <i class="fa fa-star {% if doctor.user_rating > 1 %} checked {% endif %}" title="Rate 2"></i></li>
+                                <li onclick="rate(1, {{ doctor.id }})">
+                                    <i class="fa fa-star {% if doctor.user_rating > 0 %} checked {% endif %}" title="Rate 1"></i></li>
+                            </ul>
+                        </div>
+
+                        <form id="contact-form" class="contact__form" method="post">
+                            {% csrf_token %}
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="alert alert-success contact__msg" style="display: none" role="alert">
+                                        Mesajiniz basariyla gonderildi.
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="form-group">
+                                        {% render_field cform.title class+="form-control" placeholder="Başlık" %}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="form-group">
+                                        {% render_field cform.comment_detail class+="form-control" placeholder="Yorumunuz" cols="240" rows="8"%}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row pl-3">
+                                <div class="text-center">
+                                    <button class="btn btn-main btn-round-full" name="submit" type="submit">Yorum Yap</button>
+                                </div>
+                            </div>
+                        </form>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+    </section>
+    {{ cform.errors }}
+    <section class="section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="section-title">
+                        <h2 class="mb-4">Yorumlar</h2>
+                        <div class="divider  my-4"></div>
+                    </div>
+                </div>
+            </div>
+            {% if not comments %}
+                <div class="row justify-content-left pl-3">
+                    <p class="text-muted">
+                        Henüz hiç yorum yapılmamış.
+                    </p>
+                </div>
+            {% endif %}
+            {% for comment in comments %}
+                <div class="row card-body" style="background-color: #f8f9fa">
+                    <div class="col-11">
+                        <h4>{{ comment.title }}</h4>
+                        <p>{{ comment.comment_detail }}</p>
+                    </div>
+                    {% if comment.user == user %}
+                        <div class="col-1 pull-right">
+                            <a href="{% url 'home:delete_comment' comment_id=comment.id doctor_id=doctor.id %}">
+                                <button class="btn btn-sm" style="background-color: #e12454; color: #FFFFFF;"
+                                    onclick="return confirm('Silmek istediğinize emin misiniz?')">
+                                    Sil
+                                </button>
+                            </a>
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <p class="text-muted">{{ comment.user.first_name}} {{ comment.user.last_name }} tarafından,
+                            {{ comment.sent_date }} tarihinde gönderildi.</p>
+                    </div>
+                </div>
+                <hr class="mx-n3">
+            {% endfor %}
+
+        </div>
+    </section>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script>
+        const rate = (rating, doctor_id) => {
+            fetch(`/rate/${doctor_id}/${rating}/`, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            }).then(rest => {
+                window.location.reload();
+            })
+        }
+    </script>
+
+    </body>
+{% endblock %}

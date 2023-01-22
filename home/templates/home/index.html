@@ -1,0 +1,211 @@
+{% extends 'home/base.html' %}
+{% load static %}
+{% block content %}
+
+<body id="top">
+
+<section class="banner">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-6 col-md-12 col-xl-7">
+				<div class="block">
+					<div class="divider mb-3"></div>
+					<span class="text-uppercase text-sm letter-spacing ">Size uygun doktorları ve hastaneleri kolayca bulun</span>
+					<h1 class="mb-3 mt-3">Giriş Sayfası</h1>
+					
+					<p class="mb-4 pr-5">giriş paragraf</p>
+					<div class="btn-container ">
+						<a href="/registers" target="_blank" class="btn btn-main-2 btn-icon btn-round-full">Kayıt Olun <i class="icofont-simple-right ml-2  "></i></a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<section class="section about">
+	<div class="container">
+		<div class="row align-items-center">
+			<div class="col-lg-4 col-sm-6">
+				<div class="about-img">
+					<img src="" alt="" class="img-fluid">
+					<img src="" alt="" class="img-fluid mt-4">
+				</div>
+			</div>
+			<div class="col-lg-4 col-sm-6">
+				<div class="about-img mt-4 mt-lg-0">
+					<img src="" alt="" class="img-fluid">
+				</div>
+			</div>
+			<div class="col-lg-4">
+				<div class="about-content pl-4 mt-4 mt-lg-0">
+					<h2 class="title-color">başlık deneme <br>& başlık devam</h2>
+					<p class="mt-4 mb-5">deneme text 3</p>
+
+					<a href="hizmetler.html" class="btn btn-main-2 btn-round-full btn-icon">Hizmetler<i class="icofont-simple-right ml-3"></i></a>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<section class="section service gray-bg">
+	<div class="container">
+		<div class="row justify-content-center">
+			<div class="col-lg-7 text-center">
+				<div class="section-title">
+					<h2>Size uygun tedaviyi bulun</h2>
+					<div class="divider mx-auto my-4"></div>
+					<p>Deneme açıklama</p>
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-lg-4 col-md-6 col-sm-6">
+				<div class="service-item mb-4">
+					<div class="icon d-flex align-items-center">
+						<i class="icofont-laboratory text-lg"></i>
+						<h4 class="mt-3 mb-3">Laboratuvar hizmetleri</h4>
+					</div>
+
+					<div class="content">
+						<p class="mb-4">Açıklama</p>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-lg-4 col-md-6 col-sm-6">
+				<div class="service-item mb-4">
+					<div class="icon d-flex align-items-center">
+						<i class="icofont-heart-beat-alt text-lg"></i>
+						<h4 class="mt-3 mb-3">Kardiyoloji</h4>
+					</div>
+					<div class="content">
+						<p class="mb-4">Açıklama</p>
+					</div>
+				</div>
+			</div>
+			
+			<div class="col-lg-4 col-md-6 col-sm-6">
+				<div class="service-item mb-4">
+					<div class="icon d-flex align-items-center">
+						<i class="icofont-tooth text-lg"></i>
+						<h4 class="mt-3 mb-3">Diş Sağlığı ve Bakımı</h4>
+					</div>
+					<div class="content">
+						<p class="mb-4">Açıklama</p>
+					</div>
+				</div>
+			</div>
+
+
+			<div class="col-lg-4 col-md-6 col-sm-6">
+				<div class="service-item mb-4">
+					<div class="icon d-flex align-items-center">
+						<i class="icofont-crutch text-lg"></i>
+						<h4 class="mt-3 mb-3">Genel Cerrahi</h4>
+					</div>
+
+					<div class="content">
+						<p class="mb-4">Açıklama</p>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-lg-4 col-md-6 col-sm-6">
+				<div class="service-item mb-4">
+					<div class="icon d-flex align-items-center">
+						<i class="icofont-brain-alt text-lg"></i>
+						<h4 class="mt-3 mb-3">Nöroloji</h4>
+					</div>
+					<div class="content">
+						<p class="mb-4">Açıklama</p>
+					</div>
+				</div>
+			</div>
+			
+			<div class="col-lg-4 col-md-6 col-sm-6">
+				<div class="service-item mb-4">
+					<div class="icon d-flex align-items-center">
+						<i class="icofont-dna-alt-1 text-lg"></i>
+						<h4 class="mt-3 mb-3">Jinekoloji</h4>
+					</div>
+					<div class="content">
+						<p class="mb-4">Açıklama</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<section class="section testimonial-2 gray-bg">
+	<div class="container">
+		<div class="row justify-content-center">
+			<div class="col-lg-7">
+				<div class="section-title text-center">
+					<h2>Hastaneler</h2>
+					<div class="divider mx-auto my-4"></div>
+					<p>Size en yakın & uygun hastane ve poliklinikleri bulun</p>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="container">
+		<div class="row align-items-center">
+			<div class="col-lg-12 testimonial-wrap-2">
+                {% for hospital in hospitals %}
+                    <div class="testimonial-block style-2  gray-bg">
+                            <div class="testimonial-thumb">
+                                {% if hospital.image %}
+                                    <img src="{{ hospital.image.url }}" alt="" href="hospitals/{{ hospital.id }}/" class="img-fluid">
+                                {% endif %}
+                                {% if not hospital.image %}
+                                    <img src="{% static 'images/default_h.jpg' %}">
+                                {% endif %}
+                            </div>
+                        <div class="client-info ">
+                            <h4> <a href="/hospitals/{{ hospital.id }}">{{ hospital.title }}</a></h4>
+                            <span>{{ hospital.location }}</span>
+                            <p>{{ hospital.info }}</p>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+		</div>
+	</div>
+</section>
+<section class="section team">
+    <div class="container">
+        <div class="row justify-content-center">
+			<div class="col-lg-6">
+				<div class="section-title text-center">
+					<h2 class="mb-4">Uzmanlarımızla Tanışın</h2>
+					<div class="divider mx-auto my-4"></div>
+					<p>Size uygun doktorunuzu hızla bulun</p>
+				</div>
+			</div>
+		</div>
+        <div class="row">
+            {% for doctor in doctors %}
+                <div class="col-lg-3 col-md-6 col-sm-6">
+                    <div class="team-block mb-5 mb-lg-0">
+                        {% if doctor.image %}
+                            <img src="{{ doctor.image.url }}" alt="" class="img-fluid w-100">
+                        {% endif %}
+                        <div class="content">
+                            <h2 class="mt-4 mb-0"><a href="">{{ doctor.name }}</a></h2>
+                            <span style="color: #E12454">{{ doctor.speciality}}</span>
+                            <p>{{ doctor.description }}</p>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+</body>
+{% endblock %}
+   

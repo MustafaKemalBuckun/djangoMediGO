@@ -1,0 +1,165 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+  <title>Sağlık Portali</title>
+
+    <link rel="shortcut icon" type="image/x-icon" href="{% static 'images/favicon.ico' %}" />
+    <link rel="stylesheet" href="{% static 'plugins/bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'plugins/icofont/icofont.min.css' %}">
+    <link rel="stylesheet" href="{% static 'plugins/slick-carousel/slick/slick.css' %}">
+    <link rel="stylesheet" href="{% static 'plugins/slick-carousel/slick/slick-theme.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+</head>
+<header>
+	<nav class="navbar navbar-expand-lg navigation" id="navbar" style="background-color: #FFFFFF">
+		<div class="container">
+		 	 <a class="navbar-brand logo" href="/">
+			  	<img src="{% static 'images/Logo_isim_final.svg' %}" alt="" class="img-fluid" width="240" height="50">
+			  </a>
+
+		  	<button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarmain" aria-controls="navbarmain" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="icofont-navigation-menu"></span>
+		  </button>
+
+		  <div class="collapse navbar-collapse" id="navbarmain" style="margin-left: 40px">
+			<ul class="navbar-nav ml-auto" >
+                <li class="nav-item"><a class="nav-link"></a></li>
+			  <li class="nav-item active"><a class="nav-link" href="/">Anasayfa</a></li>
+                <li class="nav-item"><a class="nav-link"></a></li>
+                <li class="nav-item"><a class="nav-link" href="/doctors">Doktorlar</a></li>
+                <li class="nav-item"><a class="nav-link"></a></li>
+                <li class="nav-item"><a class="nav-link" href="/hospitals">Hastaneler</a></li>
+                <li class="nav-item"><a class="nav-link"></a></li>
+                <li class="nav-item"><a class="nav-link" href="/about">Hakkında</a></li>
+                <li class="nav-item"><a class="nav-link"></a></li>
+			    <li class="nav-item"><a class="nav-link" href="/contact">İletişim</a></li>
+                <li class="nav-item"><a class="nav-link"></a></li>
+                <li class="nav-item dropdown">
+					<a class="text-light nav-link dropdown-toggle btn btn-main-2 btn-icon btn-round-full" style="background-color: #007BFF" href="#" id="dropdown05" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Giriş<i></i></a>
+					<ul class="dropdown-menu" aria-labelledby="dropdown05" style="background-color: #FFFFFF">
+						<li><a href="/register" class="text-light dropdown-item btn btn-main-2 btn-icon btn-round-full" style="background-color: #e43662">Hasta Kayıt<i class="icofont-simple-right ml-2  "></i></a></li>
+						<li><a href="/login" class="text-light dropdown-item btn btn-main-2 btn-icon btn-round-full" style="background-color: #0c5460">Giriş<i class="icofont-simple-right ml-2  "></i></a></li>
+{#					    <li><a href="/hospitallogin" class="text-light dropdown-item btn btn-main-2 btn-icon btn-round-full" style="background-color: #007BFF">Yetkili Girişi <i class="icofont-simple-right ml-2  "></i></a></li>#}
+                        <li><a href="/hregister" class="text-light dropdown-item btn btn-main-2 btn-icon btn-round-full" style="background-color: #007BFF;">Yetkili Kayıt<i class="icofont-simple-right ml-2  "></i></a></li>
+                    </ul>
+			  	</li>
+            </ul>
+		  </div>
+		</div>
+	</nav>
+</header>
+
+{% block content %}
+
+<body>
+
+</body>
+
+{% endblock %}
+
+<footer class="footer section gray-bg">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-4 mr-auto col-sm-6">
+				<div class="widget mb-5 mb-lg-0">
+					<p>deneme text</p>
+
+					<ul class="list-inline footer-socials mt-4">
+						<li class="list-inline-item"><i class="icofont-facebook"></i></li>
+						<li class="list-inline-item"><i class="icofont-twitter"></i></li>
+						<li class="list-inline-item"><i class="icofont-linkedin"></i></li>
+					</ul>
+				</div>
+			</div>
+
+			<div class="col-lg-2 col-md-6 col-sm-6">
+				<div class="widget mb-5 mb-lg-0">
+					<h4 class="text-capitalize mb-3">Alanlar</h4>
+					<div class="divider mb-4"></div>
+
+					<ul class="list-unstyled footer-menu lh-35">
+						<li><a href="#">Cerrahi </a></li>
+						<li><a href="#">Kadın Sağlığı</a></li>
+						<li><a href="#">Radyoloji</a></li>
+						<li><a href="#">Denemeoloji</a></li>
+					</ul>
+				</div>
+			</div>
+
+			<div class="col-lg-2 col-md-6 col-sm-6">
+				<div class="widget mb-5 mb-lg-0">
+					<h4 class="text-capitalize mb-3">Destek</h4>
+					<div class="divider mb-4"></div>
+
+					<ul class="list-unstyled footer-menu lh-35">
+						<li><a href="#">Kullanım Koşulları</a></li>
+						<li><a href="#">Gizlilik Politikası</a></li>
+						<li><a href="#">SSS</a></li>
+						<li><a href="#">deneme field</a></li>
+					</ul>
+				</div>
+			</div>
+
+			<div class="col-lg-3 col-md-6 col-sm-6">
+				<div class="widget widget-contact mb-5 mb-lg-0">
+					<h4 class="text-capitalize mb-3">İletişime Geçin</h4>
+					<div class="divider mb-4"></div>
+
+					<div class="footer-contact-block mb-4">
+						<div class="icon d-flex align-items-center">
+							<i class="icofont-email mr-3"></i>
+							<span class="h6 mb-0">7/24 iletişim Desteği</span>
+						</div>
+						<h4 class="mt-2"><a>Support@email.com</a></h4>
+					</div>
+
+				</div>
+			</div>
+		</div>
+
+		<div class="footer-btm py-4 mt-5">
+			<div class="row align-items-center justify-content-between">
+				<div class="col-lg-6">
+					<div class="subscribe-form text-lg-right mt-5 mt-lg-0">
+						<form action="#" class="subscribe">
+							<input type="text" class="form-control" placeholder="Email Adresini Giriniz">
+							<a href="#" class="btn btn-main-2 btn-round-full" style="margin-top: 5px; margin-right: 5px">Abone Ol</a>
+						</form>
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-lg-4">
+					<a class="backtop js-scroll-trigger" href="#top">
+						<i class="icofont-long-arrow-up"></i>
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</footer>
+
+    <script src="{% static 'plugins/jquery/jquery.js' %}"></script>
+    <script src="{% static 'plugins/bootstrap/js/popper.js' %}"></script>
+    <script src="{% static 'plugins/bootstrap/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'plugins/counterup/jquery.easing.js' %}"></script>
+    <script src="{% static 'plugins/slick-carousel/slick/slick.min.js' %}"></script>
+    <script src="{% static 'plugins/counterup/jquery.waypoints.min.js' %}"></script>
+
+    <script src="{% static 'plugins/shuffle/shuffle.min.js' %}"></script>
+    <script src="{% static 'plugins/counterup/jquery.counterup.min.js' %}"></script>
+    <script src="{% static 'plugins/google-map/map.js' %}"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAkeLMlsiwzp6b3Gnaxd86lvakimwGA6UA&callback=initMap"></script>
+
+    <script src="{% static 'js/script.js' %}"></script>
+    <script src="{% static 'js/contact.js' %}"></script>
+
+
+</html>

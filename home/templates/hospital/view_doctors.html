@@ -1,0 +1,81 @@
+{% load crispy_forms_filters %}
+{% load static %}
+{% include 'hospital/include.html' %}
+{% include 'hospital/admin_include.html'%}
+<head>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.6.2/js/dataTables.buttons.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.6.2/js/buttons.html5.min.js"></script>
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    <script type="text/javascript" src="{% static 'js/datatables.js' %}"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.6.2/css/buttons.dataTables.min.css">
+</head>
+<body>
+<section style="background-color: #22662C; min-height: 100vh; width: 100vw;">
+    <div id="wrapper">
+
+        <div class="page-content-wrapper">
+            <div class="container-fluid"><a class="btn btn-link" role="button" id="menu-toggle" href="#menu-toggle"><i class="fa " style="color: black;"></i></a>
+                <h2 class="text-center">Doktorlar</h2>
+                <section id="team" class="pb-5">
+                    <div class="container">
+                       <table class="table" id="example">
+                           <!--table-hover-->
+                            <thead>
+                                <tr>
+                                    <th>Fotoğraf</th>
+                                    <th>İsim</th>
+                                    <th>Info</th>
+                                    <th>Biyografi</th>
+                                    <th>Hastane</th>
+                                    <th>Uzmanlık</th>
+                                    <th>CRUD</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for doctor in doctors %}
+                                <tr style="color: black;">
+                                    {% if doctor.image %}
+                                        <td><img src="{{ doctor.image.url }}" alt="{{ doctor.name }}" width="50" height="50" style="border-radius: 50%"></td>
+                                    {% endif %}
+                                    {% if not doctor.image %}
+                                        <td><img src="{% static 'images/defaultd.png' %}" alt="" width="50" height="50" style="border-radius: 50%"></td>
+                                    {% endif %}
+                                    <td>{{ doctor.name }}</td>
+                                    <td>{{ doctor.description }}</td>
+                                    <td>{{ doctor.biography }}</td>
+                                    <td>{{ doctor.hospital }}</td>
+                                    <td>{{ doctor.speciality }}</td>
+                                    <td id="crud_{{doctor.id}}">
+                                        <a href="{% url 'home:doctor_update' doctor_id=doctor.id %}">
+                                        <i class="fas fa-pen" style="font-size: 18px; color: #b2d7fc;" data-toggle="tooltip" title="Update Doctor"></i>
+                                        </a>
+                                        &nbsp;
+                                        <a href="{% url 'home:doctor_delete' doctor_id=doctor.id %}" onclick="return confirm('Are you sure to delete {{ doctor.name }}?')">
+                                        <i class="fas fa-trash-alt" style="font-size: 18px; color: #ce0f0f;" data-toggle="tooltip" title="Delete Doctor"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+    <div class="scroll-top-wrapper"><span class="scroll-top-inner"><i class="fa fa-arrow-circle-up"></i></span></div>
+</section>
+<script src="{% static 'js/jquery.min.js' %}"></script>
+<script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'js/back-to-top-scroll.js' %}"></script>
+<script src="{% static 'js/Bold-BS4-Animated-Back-To-Top.js' %}"></script>
+<script src="{% static 'js/bs-init.js' %}"></script>
+<script src="{% static 'js/Sidebar-Menu.js' %}"></script>
+</body>

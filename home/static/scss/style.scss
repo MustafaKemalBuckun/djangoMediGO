@@ -1,0 +1,48 @@
+@import 'variables';
+
+@import 'mixins';
+
+@import 'media-query';
+
+@import 'typography';
+
+@import 'common';
+
+
+// Header Style
+@import 'templates/header';
+// Navigation Menu
+@import 'templates/navigation';
+@import 'templates/backgrounds';
+// Banner Style
+@import 'templates/slider';
+// About Section
+@import 'templates/about';
+// Feature Section
+@import 'templates/feature';
+// Counter Section
+@import 'templates/counter';
+// Doctors section
+@import 'templates/team';
+// Service section
+@import 'templates/service';
+// Department section
+@import 'templates/department';
+// Call to action section
+@import 'templates/cta';
+// Testimonial Section
+@import 'templates/review';
+// Contact Section
+@import 'templates/contact';
+// Blog Posts
+@import 'templates/blog';
+// Single Blog posts
+@import 'templates/single-post';
+// Blog Sidebar
+@import 'templates/blog-sidebar';
+// Footer
+@import 'templates/footer';
+
+
+
+
